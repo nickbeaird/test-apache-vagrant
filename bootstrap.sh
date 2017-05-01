@@ -8,29 +8,24 @@ sudo yum install -y epel-release vim tmux htop
 sudo systemctl enable httpd
 sudo systemctl start httpd
 
-# STEP 2: Install public website folders
+# STEP 2: Install public website folder and information --> two sites = two folderss
 sudo mkdir -p /var/www/example.com/public_html
+sudo mkdir -p /var/www/example2.com/public_html
 sudo chown -R $USER:$USER /var/www/example.com/public_html
+sudo chown -R $USER:$USER /var/www/example2.com/public_html
 sudo chmod -R 755 /var/www
 sudo cp /home/vagrant/index.html /var/www/example.com/public_html/index.html
-cat /home/vagrant/vhost >> /etc/httpd/conf/httpd.conf
+sudo cp /home/vagrant/index2.html /var/www/example2.com/public_html/index.html
 
-
-#echo "<html>" >> /var/www/example.com/public_html/index.html
-#echo "  <head>" >> /var/www/example.com/public_html/index.html
-#echo "    <title>Welcome to Example.com!</title>" >> /var/www/example.com/public_html/index.html
-#echo "  </head>" >> /var/www/example.com/public_html/index.html
-#echo "  <body>" >> /var/www/example.com/public_html/index.html
-#echo "<h1>Success! The example.com virtual host is working!</h1>" >> /var/www/example.com/public_html/index.html
-#echo "  </body>" >> /var/www/example.com/public_html/index.html
-#echo "</html>" >> /var/www/example.com/public_html/index.html
 
 #sudo mkdir /etc/httpd/sites-available
 #sudo mkdir /etc/httpd/sites-enabled
 
 
 # STEP 3: Setup apache config files
+cat /home/vagrant/vhost >> /etc/httpd/conf/httpd.conf
 
-
+# STEP 4: Restart the server
+sudo systemctl restart httpd
 
 
