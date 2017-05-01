@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder '.', '/vagrant', disabled: true
   
   config.vm.provision "file", source: "index.html", destination: "index.html"
+  config.vm.provision "file", source: "index2.html", destination: "index2.html"
   #config.vm.provision "file", source: "bootstrap.sh", destination: "bootstrap.sh"
   config.vm.provision "file", source: "vhost", destination: "vhost"
   
